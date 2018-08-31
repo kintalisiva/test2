@@ -1,14 +1,15 @@
 pipeline {
 
   agent any
-		stages{
+  stages{
 		
        stage('Standalone') {
 
       steps {
-     
-        sh 'mvn clean deploy -P standalone'
-        
+      	echo "$env.workspace"
+	dir ('mulejenkinstest') {
+         bat 'mvn clean deploy -P standalone'
+        	}		
         }
 
       }
